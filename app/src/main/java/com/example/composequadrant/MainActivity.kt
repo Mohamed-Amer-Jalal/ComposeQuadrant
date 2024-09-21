@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
-class MainActivity : ComponentActivity() {
+ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +34,8 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
-                ) {
+                )
+                {
                     ComposeQuadrantApp()
                 }
             }
@@ -44,34 +45,39 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeQuadrantApp() {
-    Column(Modifier.fillMaxWidth()) {
-        Row(Modifier.weight(1f)) {
-            ComposableInfoCard(
-                title = stringResource(R.string.first_title),
-                description = stringResource(R.string.first_description),
-                backgroundColor = Color(0xFFEADDFF),
-                modifier = Modifier.weight(1f)
-            )
-            ComposableInfoCard(
-                title = stringResource(R.string.second_title),
-                description = stringResource(R.string.second_description),
-                backgroundColor = Color(0xFFD0BCFF),
-                modifier = Modifier.weight(1f)
-            )
-        }
-        Row(Modifier.weight(1f)) {
-            ComposableInfoCard(
-                title = stringResource(R.string.third_title),
-                description = stringResource(R.string.third_description),
-                backgroundColor = Color(0xFFB69DF8),
-                modifier = Modifier.weight(1f)
-            )
-            ComposableInfoCard(
-                title = stringResource(R.string.fourth_title),
-                description = stringResource(R.string.fourth_description),
-                backgroundColor = Color(0xFFF6EDFF),
-                modifier = Modifier.weight(1f)
-            )
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Column(Modifier.fillMaxWidth()) {
+            Row(Modifier.weight(1f)) {
+                ComposableInfoCard(
+                    title = stringResource(R.string.first_title),
+                    description = stringResource(R.string.first_description),
+                    backgroundColor = Color(0xFFEADDFF),
+                    modifier = Modifier.weight(1f)
+                )
+                ComposableInfoCard(
+                    title = stringResource(R.string.second_title),
+                    description = stringResource(R.string.second_description),
+                    backgroundColor = Color(0xFFD0BCFF),
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            Row(Modifier.weight(1f)) {
+                ComposableInfoCard(
+                    title = stringResource(R.string.third_title),
+                    description = stringResource(R.string.third_description),
+                    backgroundColor = Color(0xFFB69DF8),
+                    modifier = Modifier.weight(1f)
+                )
+                ComposableInfoCard(
+                    title = stringResource(R.string.fourth_title),
+                    description = stringResource(R.string.fourth_description),
+                    backgroundColor = Color(0xFFF6EDFF),
+                    modifier = Modifier.weight(1f)
+                )
+            }
         }
     }
 }
@@ -103,10 +109,16 @@ private fun ComposableInfoCard(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ComposeQuadrantAppPreview() {
     ComposeQuadrantTheme {
-        ComposeQuadrantApp()
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        )
+        {
+            ComposeQuadrantApp()
+        }
     }
 }
