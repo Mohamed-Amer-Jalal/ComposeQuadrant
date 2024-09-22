@@ -1,4 +1,4 @@
- package com.example.composequadrant
+package com.example.composequadrant
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,18 +26,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
- class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ComposeQuadrantTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                )
-                {
-                    ComposeQuadrantApp()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    ComposeQuadrantApp(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                    )
                 }
             }
         }
@@ -44,9 +44,11 @@ import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 }
 
 @Composable
-fun ComposeQuadrantApp() {
+fun ComposeQuadrantApp(
+    modifier: Modifier = Modifier
+) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         color = MaterialTheme.colorScheme.background
     ) {
         Column(Modifier.fillMaxWidth()) {
@@ -97,28 +99,42 @@ private fun ComposableInfoCard(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
+        ComposeText(
             text = title,
             modifier = Modifier.padding(bottom = 16.dp),
             fontWeight = FontWeight.Bold
         )
-        Text(
+        ComposeText(
             text = description,
             textAlign = TextAlign.Center
         )
     }
 }
 
+@Composable
+fun ComposeText(
+    text: String,
+    modifier: Modifier = Modifier,
+    fontWeight: FontWeight = FontWeight.Normal,
+    textAlign: TextAlign = TextAlign.Unspecified
+) {
+    Text(
+        text = text,
+        fontWeight = fontWeight,
+        textAlign = textAlign,
+        modifier = modifier
+    )
+}
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ComposeQuadrantAppPreview() {
     ComposeQuadrantTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        )
-        {
-            ComposeQuadrantApp()
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            ComposeQuadrantApp(
+                modifier = Modifier
+                    .padding(innerPadding)
+            )
         }
     }
 }
