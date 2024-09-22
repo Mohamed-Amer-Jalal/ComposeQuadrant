@@ -9,11 +9,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,8 +31,7 @@ class MainActivity : ComponentActivity() {
             ComposeQuadrantTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     ComposeQuadrantApp(
-                        modifier = Modifier
-                            .padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
@@ -47,39 +43,34 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
-    Surface(
-        modifier = modifier,
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Column(Modifier.fillMaxWidth()) {
-            Row(Modifier.weight(1f)) {
-                ComposableInfoCard(
-                    title = stringResource(R.string.first_title),
-                    description = stringResource(R.string.first_description),
-                    backgroundColor = Color(0xFFEADDFF),
-                    modifier = Modifier.weight(1f)
-                )
-                ComposableInfoCard(
-                    title = stringResource(R.string.second_title),
-                    description = stringResource(R.string.second_description),
-                    backgroundColor = Color(0xFFD0BCFF),
-                    modifier = Modifier.weight(1f)
-                )
-            }
-            Row(Modifier.weight(1f)) {
-                ComposableInfoCard(
-                    title = stringResource(R.string.third_title),
-                    description = stringResource(R.string.third_description),
-                    backgroundColor = Color(0xFFB69DF8),
-                    modifier = Modifier.weight(1f)
-                )
-                ComposableInfoCard(
-                    title = stringResource(R.string.fourth_title),
-                    description = stringResource(R.string.fourth_description),
-                    backgroundColor = Color(0xFFF6EDFF),
-                    modifier = Modifier.weight(1f)
-                )
-            }
+    Column(modifier.fillMaxSize()) {
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description),
+                backgroundColor = Color(0xFFEADDFF),
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.second_title),
+                description = stringResource(R.string.second_description),
+                backgroundColor = Color(0xFFD0BCFF),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color(0xFFB69DF8),
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color(0xFFF6EDFF),
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
@@ -95,7 +86,7 @@ private fun ComposableInfoCard(
         modifier = modifier
             .fillMaxSize()
             .background(backgroundColor)
-            .padding(2.dp),
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -132,8 +123,7 @@ fun ComposeQuadrantAppPreview() {
     ComposeQuadrantTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             ComposeQuadrantApp(
-                modifier = Modifier
-                    .padding(innerPadding)
+                modifier = Modifier.padding(innerPadding)
             )
         }
     }
