@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
-    Column(modifier.fillMaxSize()) {
+    Column(modifier.fillMaxHeight()) {
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
@@ -84,7 +85,7 @@ private fun ComposableInfoCard(
 ) {
     Column(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxHeight()
             .background(backgroundColor)
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
