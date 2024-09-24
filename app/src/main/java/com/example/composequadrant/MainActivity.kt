@@ -46,7 +46,6 @@ fun ComposeQuadrantApp(
     BoxWithConstraints(modifier.fillMaxSize()) {
         val boxHeight = maxHeight / 2
         val boxWidth = maxWidth / 2
-
         // First quadrant
         ComposableInfoCard(
             title = stringResource(R.string.first_title),
@@ -56,7 +55,6 @@ fun ComposeQuadrantApp(
                 .size(boxWidth, boxHeight)
                 .align(Alignment.TopStart)
         )
-
         // Second quadrant
         ComposableInfoCard(
             title = stringResource(R.string.second_title),
@@ -66,7 +64,6 @@ fun ComposeQuadrantApp(
                 .size(boxWidth, boxHeight)
                 .align(Alignment.TopEnd)
         )
-
         // Third quadrant
         ComposableInfoCard(
             title = stringResource(R.string.third_title),
@@ -76,7 +73,6 @@ fun ComposeQuadrantApp(
                 .size(boxWidth, boxHeight)
                 .align(Alignment.BottomStart)
         )
-
         // Fourth quadrant
         ComposableInfoCard(
             title = stringResource(R.string.fourth_title),
