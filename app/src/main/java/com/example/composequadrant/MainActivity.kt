@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -96,20 +98,18 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    BoxWithConstraints(
+    Column(
         modifier = modifier
             .fillMaxHeight()
             .background(backgroundColor)
             .padding(16.dp),
-        contentAlignment = Alignment.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        val boxHeight = maxHeight / 2
-        val boxWidth = maxWidth / 1
         ComposeText(
             text = title,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(bottom = 16.dp).size(boxWidth, boxHeight).align(Alignment.Center),
+            modifier = Modifier.padding(bottom = 16.dp),
+            fontWeight = FontWeight.Bold
         )
         ComposeText(
             text = description,
