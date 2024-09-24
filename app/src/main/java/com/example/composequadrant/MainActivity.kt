@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
@@ -44,7 +45,7 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
-    Column(modifier.fillMaxSize()) {
+    ColumnText(modifier.fillMaxSize()) {
         RowText(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
@@ -82,19 +83,35 @@ fun RowText(modifier: Modifier = Modifier, content: @Composable RowScope.() -> U
 }
 
 @Composable
+fun ColumnText(
+    modifier: Modifier = Modifier,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    content: @Composable ColumnScope.() -> Unit,
+
+    ) {
+    Column(
+        modifier = modifier,
+        content = content,
+        verticalArrangement = verticalArrangement,
+        horizontalAlignment = horizontalAlignment
+    )
+}
+
+@Composable
 private fun ComposableInfoCard(
     title: String,
     description: String,
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    Column(
+    ColumnText(
         modifier = modifier
             .fillMaxSize()
             .background(backgroundColor)
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ComposeText(
             text = title,
