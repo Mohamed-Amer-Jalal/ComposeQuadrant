@@ -7,9 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -45,8 +43,8 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
-    ColumnText(modifier.fillMaxSize()) {
-        RowText(Modifier.weight(1f)) {
+    Column(modifier.fillMaxSize()) {
+        Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
                 description = stringResource(R.string.first_description),
@@ -60,7 +58,7 @@ fun ComposeQuadrantApp(
                 modifier = Modifier.weight(1f)
             )
         }
-        RowText(Modifier.weight(1f)) {
+        Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.third_title),
                 description = stringResource(R.string.third_description),
@@ -78,34 +76,13 @@ fun ComposeQuadrantApp(
 }
 
 @Composable
-fun RowText(modifier: Modifier = Modifier, content: @Composable RowScope.() -> Unit) {
-    Row(modifier = modifier, content = content)
-}
-
-@Composable
-fun ColumnText(
-    modifier: Modifier = Modifier,
-    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    content: @Composable ColumnScope.() -> Unit,
-
-    ) {
-    Column(
-        modifier = modifier,
-        content = content,
-        verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
-    )
-}
-
-@Composable
 private fun ComposableInfoCard(
     title: String,
     description: String,
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    ColumnText(
+    Column(
         modifier = modifier
             .fillMaxSize()
             .background(backgroundColor)
