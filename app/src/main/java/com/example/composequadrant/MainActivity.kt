@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -44,7 +45,7 @@ fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
     Column(modifier.fillMaxSize()) {
-        Row(Modifier.weight(1f)) {
+        RowText(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
                 description = stringResource(R.string.first_description),
@@ -58,7 +59,7 @@ fun ComposeQuadrantApp(
                 modifier = Modifier.weight(1f)
             )
         }
-        Row(Modifier.weight(1f)) {
+        RowText(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.third_title),
                 description = stringResource(R.string.third_description),
@@ -73,6 +74,11 @@ fun ComposeQuadrantApp(
             )
         }
     }
+}
+
+@Composable
+fun RowText(modifier: Modifier = Modifier, content: @Composable RowScope.() -> Unit) {
+    Row(modifier = modifier, content = content)
 }
 
 @Composable
