@@ -6,12 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,9 +45,7 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
-    BoxWithConstraints(modifier.fillMaxSize()) {
-        val boxHeight = maxHeight / 2
-        val boxWidth = maxWidth / 2
+    Box(modifier.fillMaxSize()) {
 
         // First quadrant
         ComposableInfoCard(
@@ -55,7 +53,8 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.first_description),
             backgroundColor = Color(0xFFEADDFF),
             modifier = Modifier
-                .size(boxWidth, boxHeight)
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth(0.5f)
                 .align(Alignment.TopStart)
         )
 
@@ -65,7 +64,8 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.second_description),
             backgroundColor = Color(0xFFD0BCFF),
             modifier = Modifier
-                .size(boxWidth, boxHeight)
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth(0.5f)
                 .align(Alignment.TopEnd)
         )
 
@@ -75,7 +75,8 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.third_description),
             backgroundColor = Color(0xFFB69DF8),
             modifier = Modifier
-                .size(boxWidth, boxHeight)
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth(0.5f)
                 .align(Alignment.BottomStart)
         )
 
@@ -85,7 +86,8 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.fourth_description),
             backgroundColor = Color(0xFFF6EDFF),
             modifier = Modifier
-                .size(boxWidth, boxHeight)
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth(0.5f)
                 .align(Alignment.BottomEnd)
         )
     }
@@ -109,7 +111,8 @@ private fun ComposableInfoCard(
         ComposeText(
             text = title,
             modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
         )
         ComposeText(
             text = description,
