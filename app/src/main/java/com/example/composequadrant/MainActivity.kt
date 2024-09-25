@@ -6,12 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,7 +45,9 @@ class MainActivity : ComponentActivity() {
 fun ComposeQuadrantApp(
     modifier: Modifier = Modifier
 ) {
-    Box(modifier.fillMaxSize()) {
+    BoxWithConstraints(modifier.fillMaxSize()) {
+        val boxHeight = maxHeight / 2
+        val boxWidth = maxWidth / 2
 
         // First quadrant
         ComposableInfoCard(
@@ -53,8 +55,7 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.first_description),
             backgroundColor = Color(0xFFEADDFF),
             modifier = Modifier
-                .fillMaxHeight(0.5f)
-                .fillMaxWidth(0.5f)
+                .size(boxWidth, boxHeight)
                 .align(Alignment.TopStart)
         )
 
@@ -64,8 +65,7 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.second_description),
             backgroundColor = Color(0xFFD0BCFF),
             modifier = Modifier
-                .fillMaxHeight(0.5f)
-                .fillMaxWidth(0.5f)
+                .size(boxWidth, boxHeight)
                 .align(Alignment.TopEnd)
         )
 
@@ -75,8 +75,7 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.third_description),
             backgroundColor = Color(0xFFB69DF8),
             modifier = Modifier
-                .fillMaxHeight(0.5f)
-                .fillMaxWidth(0.5f)
+                .size(boxWidth, boxHeight)
                 .align(Alignment.BottomStart)
         )
 
@@ -86,12 +85,101 @@ fun ComposeQuadrantApp(
             description = stringResource(R.string.fourth_description),
             backgroundColor = Color(0xFFF6EDFF),
             modifier = Modifier
-                .fillMaxHeight(0.5f)
-                .fillMaxWidth(0.5f)
+                .size(boxWidth, boxHeight)
                 .align(Alignment.BottomEnd)
         )
     }
 }
+
+/*@Composable
+fun ComposeQuadrantApp(
+    modifier: Modifier = Modifier
+) {
+    Box(modifier.fillMaxSize()) {
+
+        // First quadrant
+        ComposableInfoCard(
+            title = stringResource(R.string.first_title),
+            description = stringResource(R.string.first_description),
+            backgroundColor = Color(0xFFEADDFF),
+            modifier = Modifier
+                .fillMaxSize(0.5f)
+                .align(Alignment.TopStart)
+        )
+
+        // Second quadrant
+        ComposableInfoCard(
+            title = stringResource(R.string.second_title),
+            description = stringResource(R.string.second_description),
+            backgroundColor = Color(0xFFD0BCFF),
+            modifier = Modifier
+                .fillMaxSize(0.5f)
+                .align(Alignment.TopEnd)
+        )
+
+        // Third quadrant
+        ComposableInfoCard(
+            title = stringResource(R.string.third_title),
+            description = stringResource(R.string.third_description),
+            backgroundColor = Color(0xFFB69DF8),
+            modifier = Modifier
+                .fillMaxSize(0.5f)
+                .align(Alignment.BottomStart)
+        )
+
+        // Fourth quadrant
+        ComposableInfoCard(
+            title = stringResource(R.string.fourth_title),
+            description = stringResource(R.string.fourth_description),
+            backgroundColor = Color(0xFFF6EDFF),
+            modifier = Modifier
+                .fillMaxSize(0.5f)
+                .align(Alignment.BottomEnd)
+        )
+    }
+}*/
+
+/*@Composable
+fun ComposeQuadrantApp(
+    modifier: Modifier = Modifier
+) {
+    Column(modifier.fillMaxSize()) {
+        Row(Modifier.weight(1f)) {
+            // First quadrant
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description),
+                backgroundColor = Color(0xFFEADDFF),
+                modifier = Modifier.weight(1f)
+            )
+
+            // Second quadrant
+            ComposableInfoCard(
+                title = stringResource(R.string.second_title),
+                description = stringResource(R.string.second_description),
+                backgroundColor = Color(0xFFD0BCFF),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            // Third quadrant
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color(0xFFB69DF8),
+                modifier = Modifier.weight(1f)
+            )
+
+            // Fourth quadrant
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color(0xFFF6EDFF),
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}*/
 
 @Composable
 private fun ComposableInfoCard(
