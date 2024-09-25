@@ -213,8 +213,8 @@ private fun ComposableInfoCard(
 fun ComposeText(
     text: String,
     modifier: Modifier = Modifier,
-    fontWeight: FontWeight = FontWeight.Normal,
-    textAlign: TextAlign = TextAlign.Unspecified
+    fontWeight: FontWeight? = null,
+    textAlign: TextAlign? = null
 ) {
     Text(
         text = text,
