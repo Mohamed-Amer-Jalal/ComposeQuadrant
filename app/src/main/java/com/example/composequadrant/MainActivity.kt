@@ -194,7 +194,7 @@ private fun ComposableInfoCard(
             .background(backgroundColor)
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ComposeText(
             text = title,
